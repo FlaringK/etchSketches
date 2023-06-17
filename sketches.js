@@ -9,6 +9,9 @@ const getUrlParam = (key) => {
 
 const keyfy = text => text.toLowerCase().replace(/[^a-z0-9]/g, "")
 
+let urlPre = ""
+urlPre = "/etchSketches"
+
 // Init links
 const linkContentsTable = (sketches) => {
 
@@ -37,7 +40,7 @@ const linkContentsTable = (sketches) => {
       let a = document.createElement("a")
 
       a.innerText = story.title
-      a.href = `/etchSketches/?section=${keyfy(section.section)}&sketch=${keyfy(story.title)}`
+      a.href = urlPre + `/?section=${keyfy(section.section)}&sketch=${keyfy(story.title)}`
 
       li.appendChild(a)
       ul.appendChild(li)
@@ -79,7 +82,7 @@ const loadPage = sketches => {
   if (section[sketchIndex - 1]) {
     prevLink = document.querySelector("#prevLink a")
 
-    prevLink.href = `/etchSketches/?section=${keyfy(sketches[sectionIndex].section)}&sketch=${keyfy(section[sketchIndex - 1].title)}`
+    prevLink.href = urlPre + `/?section=${keyfy(sketches[sectionIndex].section)}&sketch=${keyfy(section[sketchIndex - 1].title)}`
     prevLink.innerText = "< " + section[sketchIndex - 1].title
   } else {
     document.getElementById("prevLink").style.display = "none"
@@ -88,7 +91,7 @@ const loadPage = sketches => {
   if (section[sketchIndex + 1]) {
     nextLink = document.querySelector("#nextLink a")
 
-    nextLink.href = `/etchSketches/?section=${keyfy(sketches[sectionIndex].section)}&sketch=${keyfy(section[sketchIndex + 1].title)}`
+    nextLink.href = urlPre + `/?section=${keyfy(sketches[sectionIndex].section)}&sketch=${keyfy(section[sketchIndex + 1].title)}`
     nextLink.innerText = section[sketchIndex + 1].title + " >"
   } else {
     document.getElementById("nextLink").style.display = "none"
