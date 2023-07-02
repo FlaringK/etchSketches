@@ -114,6 +114,18 @@ ul {
 
 #sketch.home { display: none; }
 
+#sketch img {
+  margin: 0 -25px;
+  max-width: 650px;
+}
+
+#frame {
+  max-width: 940px;
+  margin: auto;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
 /* HOMESTUCK */
 
 #sketch.homestuck {
@@ -125,8 +137,6 @@ ul {
 
 #sketch.homestuck #frame {
   background-color: #c6c6c6;
-  max-width: 940px;
-  margin: auto;
   padding-top: 7px;
   padding-bottom: 23px;
 }
@@ -135,12 +145,16 @@ ul {
   background-color: #eeeeee;
   max-width: 650px;
   margin: auto;
-  padding: 0 25px;
+}
+
+#sketch.homestuck #body {
+  margin: 0 25px;
 }
 
 #sketch.homestuck #content::after {
   content: "Start Over | Go Back";
   display: block;
+  margin-left: 25px;
   text-align: left;
   font-size: 10px;
   font-family: Verdana,Arial,Helvetica,sans-serif;
@@ -166,6 +180,14 @@ ul {
 #sketch.trolls {
   background-color: #525252;
 }
+
+#sketch.trolls #frame {
+  max-width: none;
+  margin: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 
 #sketch.trolls #body {
   max-width: 650px;
@@ -208,6 +230,7 @@ ul {
   border-top: hidden;
   border-bottom: solid 4px #525252;
   position: relative;
+  margin-top: 1em;
 }
 
 .trollian::before {
@@ -301,8 +324,7 @@ ul {
 }
 
 #sketch.discord #frame {
-  max-width: 940px;
-  margin: auto;
+
   padding-top: 7px;
   padding-bottom: 23px;
 }
@@ -324,12 +346,17 @@ ul {
   font-size:14px;
 
   text-align: left;
+  margin: 1em 0;
 }
 
 #sketch.discord #sketchTitle {
   font-weight: bold;
   margin: 16px 0 8px;
   font-size: 45px;
+}
+
+#sketch.discord img {
+  border-radius: 10px;
 }
 
 /* SPLATOON */
@@ -341,8 +368,6 @@ ul {
 }
 
 #sketch.splatoon #frame {
-  max-width: 940px;
-  margin: auto;
   padding-top: 7px;
   padding-bottom: 23px;
 }
@@ -423,17 +448,9 @@ ul {
   font-family: 'Times New Roman', Times, serif;
 }
 
-#sketch.ao3 #frame {
-  max-width: 940px;
-  margin: auto;
-  padding-top: 150px;
-  padding-bottom: 150px;
-}
-
 #sketch.ao3 #content {
   max-width: 650px;
   margin: auto;
-  padding: 0 25px;
   line-height: 1.5em;
 }
 
@@ -448,5 +465,71 @@ ul {
   font-weight: 600;
   text-align: left;
   width: max-content;
+  max-width: 650px;
   margin: auto;
+}
+
+/* TUMBLR */
+
+#sketch.tumblr {
+  background-color: #011935 ;
+}
+
+#sketch.tumblr #content {
+  max-width: 540px;
+  margin: auto;
+  padding: 0 25px;
+  line-height: 1.5em;
+  background-color: white;
+  border-radius: 8px;
+}
+
+#sketch.tumblr #content::before {
+  content: "";
+  background-image: url(./Images/etchHeader.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  display: block;
+  width: 540px;
+  height: 70px;
+}
+
+#sketch.tumblr #body {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: left;
+  font-weight: 600;
+  padding: 0.5em 16px 2em;
+}
+
+#sketch.tumblr #sketchTitle {
+  font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 1.625rem;
+  line-height: 1.3077;
+  text-align: left;
+  padding: 15px 16px 0;
+}
+
+/* SPACEBATTLE */
+
+#sketch.spacebattle {
+  background-color: #191919;
+  color: #4ac925;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+}
+
+#sketch.spacebattle #body {
+  max-width: 450px;
+  margin: 1em auto;
+  text-align: left;
+
+  background-color: #262626;
+  padding: 0.5em 1em;
+  border: solid 1px #4c4c4c;
+  border-left: solid 4px #496d90;
+}
+
+#sketch.spacebattle #sketchTitle {
+  font-size: 32px;
 }

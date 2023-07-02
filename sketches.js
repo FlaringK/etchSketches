@@ -10,21 +10,10 @@ const getUrlParam = (key) => {
 const keyfy = text => text.toLowerCase().replace(/[^a-z0-9]/g, "")
 
 let urlPre = ""
-urlPre = "/etchSketches"
+urlPre = window.location.href.includes("/etchSketches") ? "/etchSketches" : ""
 
 // Init links
 const linkContentsTable = (sketches) => {
-
-  // Give each li a link
-  // document.querySelectorAll("li").forEach((e, i) => {
-  //   const text = e.innerText
-  //   const a = document.createElement("a")
-  //   a.innerText = text
-  //   a.href = `/?sketch=${text.toLowerCase().replace(/\s/g, "")}`
-
-  //   e.innerText = ""
-  //   e.appendChild(a)
-  // })
 
   const toc = document.getElementById("toc")
 
@@ -75,24 +64,31 @@ const loadPage = sketches => {
 
   document.getElementById("sketchTitle").innerHTML = sketchData.title
   document.getElementById("sketch").className = sketchData.theme
-  document.getElementById("img").src = sketchData.img
+  // document.getElementById("img").src = sketchData.img
   document.getElementById("body").innerHTML = sketchData.body
 
   // Set nav links
-  if (section[sketchIndex - 1]) {
-    prevLink = document.querySelector("#prevLink a")
+  prevLink = document.querySelector("#prevLink a")
+  nextLink = document.querySelector("#nextLink a")
 
+  if (section[sketchIndex - 1]) {
     prevLink.href = urlPre + `/?section=${keyfy(sketches[sectionIndex].section)}&sketch=${keyfy(section[sketchIndex - 1].title)}`
     prevLink.innerText = "< " + section[sketchIndex - 1].title
+  } else if (sketches[sectionIndex - 1]) {
+    let lastStory = sketches[sectionIndex - 1].stories.slice(-1)[0]
+    prevLink.href = urlPre + `/?section=${keyfy(sketches[sectionIndex - 1].section)}&sketch=${keyfy(lastStory.title)}`
+    prevLink.innerText = "< " + lastStory.title
   } else {
     document.getElementById("prevLink").style.display = "none"
   }
 
   if (section[sketchIndex + 1]) {
-    nextLink = document.querySelector("#nextLink a")
-
     nextLink.href = urlPre + `/?section=${keyfy(sketches[sectionIndex].section)}&sketch=${keyfy(section[sketchIndex + 1].title)}`
     nextLink.innerText = section[sketchIndex + 1].title + " >"
+  } else if (sketches[sectionIndex + 1]) {
+    let firstStory = sketches[sectionIndex + 1].stories[0]
+    nextLink.href = urlPre + `/?section=${keyfy(sketches[sectionIndex + 1].section)}&sketch=${keyfy(firstStory.title)}`
+    nextLink.innerText = firstStory.title + " >"
   } else {
     document.getElementById("nextLink").style.display = "none"
   }
